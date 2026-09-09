@@ -46,7 +46,7 @@ export class Carrion {
       const rot = Math.min(c.meat, (1.4 + c.size) * dt);
       c.meat -= rot;
       if (rot > 0) this.veg.addNutrients(c.x, c.y, (rot / 100) * 0.6);
-      if (c.meat <= 0.5 || c.age > 60) c.alive = false;
+      if (c.meat <= 0.5 || c.age > 45) c.alive = false;
       if (c.alive) list[w++] = c;
     }
     list.length = w;

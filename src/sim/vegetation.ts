@@ -34,7 +34,7 @@ export class Vegetation {
       for (let i = 0; i < n; i++) {
         const x = (i + 0.5) * VEG_CELL;
         const y = (j + 0.5) * VEG_CELL;
-        const f = terrain.fertilityAt(x, y);
+        const f = terrain.fertilityAt(x, y) * 0.82;
         const k = j * n + i;
         this.capacity[k] = f;
         this.biomass[k] = f * (0.55 + 0.35 * Math.sin(i * 0.37 + j * 0.51) * Math.cos(j * 0.23));

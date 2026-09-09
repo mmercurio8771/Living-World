@@ -338,7 +338,7 @@ export class World {
       let gain = 0;
       if (o.state === 'eat' && o.species === 'grazer') {
         const b = this.vegetation.biomassAt(o.x, o.y);
-        const rate = 5.6 * Math.pow(body, 0.75) * (b / (b + 0.12));
+        const rate = 4.7 * Math.pow(body, 0.75) * (b / (b + 0.12));
         const want = Math.min(rate * dt, (o.maxEnergy - o.energy) * 0.999);
         const taken = this.vegetation.eatAt(o.x, o.y, Math.max(0, want) / BIOMASS_ENERGY);
         gain = taken * BIOMASS_ENERGY;
@@ -420,9 +420,9 @@ export class World {
     const pSpeed = SPECIES.grazer.baseSpeed * prey.genes.speed * (0.55 + 0.45 * prey.maturity);
     const speedEdge = (hSpeed - pSpeed) / pSpeed; // -0.5 .. +1
     const sizeEdge = h.bodySize / prey.bodySize - 1;
-    let p = 0.33 + 0.45 * speedEdge + 0.12 * sizeEdge;
+    let p = 0.27 + 0.4 * speedEdge + 0.12 * sizeEdge;
     if (prey.state === 'rest' || prey.state === 'eat') p += 0.25; // ambush
-    p = clamp(p, 0.06, 0.92);
+    p = clamp(p, 0.05, 0.85);
     this.hunts++;
     if (this.rng.chance(p)) {
       this.kills++;
@@ -473,7 +473,7 @@ export class World {
     const litter = clamp(Math.round(o.genes.litterSize + this.rng.range(-0.3, 0.3)), 1, 4);
     const invest = 0.5 * o.maxEnergy;
     o.energy -= invest;
-    o.cooldown = 16 + 6 * litter;
+    o.cooldown = 26 + 8 * litter;
     const perChild = (invest / litter) * 0.9;
     for (let i = 0; i < litter; i++) {
       if (this.counts[o.species] >= SPECIES[o.species].maxPopulation) break;
@@ -519,7 +519,7 @@ export class World {
     else this.lineageCounts.set(o.lineageId, lc);
     // what the earth takes back: a body, then nutrients
     if (cause === 'eaten' || cause === 'fire') this.vegetation.addNutrients(o.x, o.y, 0.3 * o.bodySize);
-    else this.carrion.add(o.x, o.y, 34 * o.bodySize + 0.3 * Math.max(0, o.energy), o.bodySize, o.species);
+    else this.carrion.add(o.x, o.y, 26 * o.bodySize + 0.3 * Math.max(0, o.energy), o.bodySize, o.species);
     if (cause !== 'eaten') this.effects.push({ kind: 'death', x: o.x, y: o.y, species: o.species, size: o.bodySize, id: o.id });
   }
 

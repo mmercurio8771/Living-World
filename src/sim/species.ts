@@ -40,7 +40,7 @@ export const SPECIES: Record<SpeciesId, SpeciesDef> = {
       hue: 34,
       pattern: 0.3,
     },
-    maxPopulation: 2200,
+    maxPopulation: 2500,
   },
   hunter: {
     id: 'hunter',
@@ -49,7 +49,7 @@ export const SPECIES: Record<SpeciesId, SpeciesDef> = {
     diet: 'meat',
     baseVision: 22,
     baseSpeed: 5.6,
-    basalCost: 0.9,
+    basalCost: 1.0,
     maturation: 34,
     lifespan: 250,
     means: {
@@ -63,6 +63,6 @@ export const SPECIES: Record<SpeciesId, SpeciesDef> = {
       hue: 18,
       pattern: 0.4,
     },
-    maxPopulation: 700,
+    maxPopulation: 600,
   },
 };
