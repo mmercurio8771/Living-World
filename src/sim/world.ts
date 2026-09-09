@@ -81,7 +81,7 @@ export class World {
 
   /** Populate a fresh world. */
   genesis(grazers = 340, hunters = 30): void {
-    this.climate.time = 0.34 * DAY_LENGTH; // start mid-morning
+    this.climate.time = 0.31 * DAY_LENGTH; // start in the golden hour after sunrise
     for (let i = 0; i < grazers; i++) this.spawnRandom('grazer', 0, 0.45);
     for (let i = 0; i < hunters; i++) this.spawnRandom('hunter', 0, 0.5);
   }

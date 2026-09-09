@@ -2,8 +2,8 @@ import { SimplexNoise } from './noise';
 import { Terrain, SEA_LEVEL } from './terrain';
 import { clamp, lerp, smoothstep, TAU } from './rng';
 
-export const DAY_LENGTH = 60; // sim seconds per day
-export const DAYS_PER_YEAR = 4;
+export const DAY_LENGTH = 90; // sim seconds per day
+export const DAYS_PER_YEAR = 3;
 export const YEAR_LENGTH = DAY_LENGTH * DAYS_PER_YEAR;
 
 export type Season = 'spring' | 'summer' | 'autumn' | 'winter';
