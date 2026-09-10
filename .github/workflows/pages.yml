@@ -1,5 +1,6 @@
 # Builds the app and publishes it to GitHub Pages on every push.
-# One-time setup: repository Settings → Pages → Source: "GitHub Actions".
+# The first step switches the repository's Pages source to "GitHub Actions" if it
+# is still on "Deploy from a branch", so no manual settings change is needed.
 name: Deploy to GitHub Pages
 
 on:
@@ -21,6 +22,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Point GitHub Pages at this workflow
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X PUT "repos/${{ github.repository }}/pages" -f build_type=workflow \
+            || gh api -X POST "repos/${{ github.repository }}/pages" -f build_type=workflow \
+            || echo "Could not change the Pages source automatically; set Settings → Pages → Source to GitHub Actions."
+      - uses: actions/configure-pages@v5
       - uses: actions/setup-node@v4
         with:
           node-version: 22
