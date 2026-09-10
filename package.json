@@ -1,7 +1,7 @@
 {
   "name": "living-world",
   "version": "1.0.0",
-  "description": "An interactive evolving ecosystem — a window into a tiny living world.",
+  "description": "An interactive evolving ecosystem \u2014 a window into a tiny living world.",
   "type": "module",
   "private": true,
   "scripts": {
@@ -9,7 +9,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "sim": "tsx scripts/headless.ts"
+    "sim": "tsx scripts/headless.ts",
+    "build:single": "vite build && node scripts/single-file.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.20.1",

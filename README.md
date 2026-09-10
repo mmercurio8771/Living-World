@@ -15,6 +15,11 @@ Add `?seed=anything` to the address to get a specific island back. Each seed is 
 
 `npm run sim -- 20 7` runs the same ecosystem headlessly in Node for 20 sim-minutes on seed 7 and prints the population and trait log. `--exp=blight|drought|fast|cold|sun|nohunters` applies an experiment at the 5-minute mark.
 
+## Previewing without a local setup
+
+- **Single file.** `npm run build:single` writes `dist/living-world.html`, one self-contained page that runs when opened straight from disk. No server, no install.
+- **GitHub Pages.** The workflow in `.github/workflows/pages.yml` builds and publishes the app on every push. Turn it on once under the repository's Settings → Pages → Source: *GitHub Actions*. The site then lives at `https://<owner>.github.io/<repo>/`.
+
 ## Controls
 
 | Action | Input |
